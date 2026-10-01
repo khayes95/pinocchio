@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pinocchio-uq"
+version = "0.1.0"
+description = "Fast uncertainty estimates for black-box language models"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Kevin David Hayes", email = "kevindavidhayes1@gmail.com"},
+]
+keywords = [
+    "uncertainty-quantification",
+    "llm",
+    "calibration",
+    "hallucination-detection",
+    "selective-prediction",
+    "openai",
+    "gpt",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "torch>=2.1.0",
+    "torchvision>=0.16.0",
+    "transformers>=5.2.0",
+    "peft>=0.18.0",
+    "accelerate>=0.26.0",
+    "pillow>=9.0.0",
+    "huggingface-hub>=0.20.0",
+    "tqdm>=4.65.0",
+]
+
+[project.optional-dependencies]
+openai = ["openai>=1.0.0"]
+eval = ["scikit-learn>=1.3.0", "numpy>=1.24.0"]
+dev = ["pytest", "ruff"]
+all = ["openai>=1.0.0", "scikit-learn>=1.3.0", "numpy>=1.24.0"]
+
+[project.urls]
+Homepage = "https://pinocchio-uq.com"
+Paper = "https://arxiv.org/abs/2609.24881"
+Repository = "https://github.com/khayes95/pinocchio"
+Documentation = "https://github.com/khayes95/pinocchio#readme"
+Issues = "https://github.com/khayes95/pinocchio/issues"
+"Model Weights" = "https://huggingface.co/KevinDavidHayes/pinocchio-0.8b"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
