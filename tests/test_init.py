@@ -6,9 +6,11 @@ import pytest
 
 
 def test_version():
+    from importlib.metadata import version
+
     from pinocchio import __version__
 
-    assert __version__ == "0.1.0"
+    assert __version__ == version("pinocchio-uq")
 
 
 def test_pinocchio_class_importable():
