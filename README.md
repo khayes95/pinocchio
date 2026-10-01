@@ -82,7 +82,7 @@ The logits are the calibrator's own; the target model is never inspected.
 |-----------|---------|-------------|
 | `adapter` | `"KevinDavidHayes/pinocchio-0.8b"` | Hugging Face Hub repo or local path of the adapter |
 | `base_model` | `"Qwen/Qwen3.5-0.8B"` | Base model |
-| `device_map` | `"auto"` | Device placement |
+| `device_map` | `"auto"` | Device placement; uses the CPU when no CUDA GPU is available |
 | `torch_dtype` | bfloat16 on GPU, float32 on CPU | Model precision |
 | `use_placeholder_image` | `True` | Reproduce the training input, which paired every text example with a blank image |
 

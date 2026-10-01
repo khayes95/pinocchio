@@ -54,6 +54,10 @@ def load_model(
     Returns:
         Tuple of (model, tokenizer, device).
     """
+    if device_map == "auto" and not torch.cuda.is_available():
+        # Without CUDA, "auto" can place the model on Apple's MPS backend, where loading stalls. Use the CPU.
+        device_map = "cpu"
+
     if torch_dtype is None:
         # Guard against CPU-only environments where cuda.is_bf16_supported() would fail
         if torch.cuda.is_available() and torch.cuda.is_bf16_supported():
